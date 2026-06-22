@@ -26,6 +26,7 @@ var init = function (window) {
       view.addChild(circle);
       circles.push(circle);
     }
+
     // TODO 3 : Call the drawCircle() function
     drawCircle(1);
     drawCircle(1);
@@ -34,6 +35,9 @@ var init = function (window) {
     drawCircle(1);
 
     // TODO 7 : Use a loop to create multiple circles
+    for (var i = 0; i < 50; i++) {
+      drawCircle();
+    }
 
     ///////////////////
     // PROGRAM LOGIC //
@@ -46,20 +50,15 @@ var init = function (window) {
         */
     function update() {
       // TODO 4 : Update the position of each circle using physikz.updatePosition()
-      physikz.updatePosition(circles[0]);
-      physikz.updatePosition(circles[1]);
-      physikz.updatePosition(circles[2]);
-      physikz.updatePosition(circles[3]);
-      physikz.updatePosition(circles[4]);
+
       // TODO 5 : Call game.checkCirclePosition() on your circles
-      game.checkCirclePosition(circles[0]);
-      game.checkCirclePosition(circles[1]);
-      game.checkCirclePosition(circles[2]);
-      game.checkCirclePosition(circles[3]);
-      game.checkCirclePosition(circles[4]);
-      
+      for (var i = 0; i < circle.length; i++) {
+        physikz.updatePosition(circles[1]);
+        game.checkCirclePosition(circles[1]);
+      }
       // TODO 8 / TODO 9 : Iterate over the array
     }
+    for (var i = 0; i < 25; i++) {}
 
     /* 
         This Function should check the position of a circle that is passed to the 
@@ -73,7 +72,21 @@ var init = function (window) {
       }
 
       // TODO 6 : YOUR CODE STARTS HERE //////////////////////
-      var rightEdge = circle.x + circle.radius;
+      if (circle.x > canvas.width) {
+        circle.x = 0;
+      }
+
+      if (circle.x < 0) {
+        circle.x = canvas.height;
+      }
+
+      if (circle.y < 0) {
+        circle.y = canvas.height;
+      }
+
+      if (circle.y > canvas.height) {
+        circle.y = 0;
+      }
       // YOUR TODO 6 CODE ENDS HERE //////////////////////////
     };
 
