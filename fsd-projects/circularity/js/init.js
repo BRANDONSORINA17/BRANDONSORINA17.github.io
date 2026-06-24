@@ -74,17 +74,15 @@ var init = function (window) {
         circle.x = 0;
       }
 
-      if (circle.x < 0) {
-        circle.x = canvas.height;
+      if (circle.y < 0) {
+        circle.y = canvas.height;
       }
 
       if (circle.y < 0) {
         circle.y = canvas.height;
       }
 
-      if (circle.y > canvas.height) {
-        circle.y = 0;
-      }
+      
       // YOUR TODO 6 CODE ENDS HERE //////////////////////////
     };
 
